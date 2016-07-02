@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
   if Vagrant.has_plugin?("vagrant-cachier")
     # Configure cached packages to be shared between instances of the same base box.
     # More info on http://fgrehm.viewdocs.io/vagrant-cachier/usage
-    config.cache.scope = :box
+    #config.cache.scope = :box
   end
 
   #config.vm.synced_folder File.expand_path("..") + "/devstack", "/home/vagrant/devstack"
@@ -71,15 +71,6 @@ Vagrant.configure(2) do |config|
        vb.nested        = true
        vb.graphics_type = 'spice'
        vb.video_type    = 'qxl'
-       vb.customize [
-           'modifyvm', :id,
-           '--nicpromisc3', "allow-all"
-          ]
-       vb.customize [
-           "guestproperty", "set", :id,
-           "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000
-          ]
-       override.vm.box = ENV.fetch('VAGRANT_OVN_VM_BOX', 'boxcutter/ubuntu1404')
     end
 
   end
@@ -127,15 +118,6 @@ Vagrant.configure(2) do |config|
        vb.nested        = true
        vb.graphics_type = 'spice'
        vb.video_type    = 'qxl'
-       vb.customize [
-           'modifyvm', :id,
-           '--nicpromisc3', "allow-all"
-          ]
-       vb.customize [
-           "guestproperty", "set", :id,
-           "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000
-          ]
-       override.vm.box = ENV.fetch('VAGRANT_OVN_VM_BOX', 'boxcutter/ubuntu1404')
     end
   end
 
@@ -225,15 +207,6 @@ Vagrant.configure(2) do |config|
        vb.nested        = true
        vb.graphics_type = 'spice'
        vb.video_type    = 'qxl'
-       vb.customize [
-           'modifyvm', :id,
-           '--nicpromisc3', "allow-all"
-          ]
-       vb.customize [
-           "guestproperty", "set", :id,
-           "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000
-          ]
-       override.vm.box = ENV.fetch('VAGRANT_OVN_VM_BOX', 'boxcutter/ubuntu1404')
     end
   end
 
@@ -279,15 +252,6 @@ Vagrant.configure(2) do |config|
        vb.nested        = true
        vb.graphics_type = 'spice'
        vb.video_type    = 'qxl'
-       vb.customize [
-           'modifyvm', :id,
-           '--nicpromisc3', "allow-all"
-          ]
-       vb.customize [
-           "guestproperty", "set", :id,
-           "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000
-          ]
-       override.vm.box = ENV.fetch('VAGRANT_OVN_VM_BOX', 'boxcutter/ubuntu1404')
     end
   end
 end
