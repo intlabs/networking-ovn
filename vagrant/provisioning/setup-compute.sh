@@ -73,22 +73,6 @@ source devstack/openrc admin admin
 ROUTER_GATEWAY=`neutron port-list -c fixed_ips -c device_owner | grep router_gateway | awk -F'ip_address'  '{ print $2 }' | cut -f3 -d\"`
 sudo ip route add $FIXED_RANGE via $ROUTER_GATEWAY
 
-# NFS Setup
-sudo apt-get update
-sudo apt-get install -y nfs-common
-sudo mkdir -p /opt/stack/data/nova/instances
-sudo chmod o+x /opt/stack/data/nova/instances
-sudo chown vagrant:vagrant /opt/stack/data/nova/instances
-sudo sh -c "echo \"$OVN_CONTROLLER_IP:/opt/stack/data/nova/instances /opt/stack/data/nova/instances nfs defaults 0 0\" >> /etc/fstab"
-sudo mount /opt/stack/data/nova/instances
-sudo chown vagrant:vagrant /opt/stack/data/nova/instances
-sudo sh -c "echo \"listen_tls = 0\" >> /etc/libvirt/libvirtd.conf"
-sudo sh -c "echo \"listen_tcp = 1\" >> /etc/libvirt/libvirtd.conf"
-sudo sh -c "echo -n \"auth_tcp =\" >> /etc/libvirt/libvirtd.conf"
-sudo sh -c 'echo " \"none\"" >> /etc/libvirt/libvirtd.conf'
-sudo sh -c "sed -i 's/env libvirtd_opts\=\"\-d\"/env libvirtd_opts\=\"-d -l\"/g' /etc/init/libvirt-bin.conf"
-sudo sh -c "sed -i 's/libvirtd_opts\=\"\-d\"/libvirtd_opts\=\"\-d \-l\"/g' /etc/default/libvirt-bin"
-sudo /etc/init.d/libvirt-bin restart
 
 # Set the OVN_*_DB variables to enable OVN commands using a remote database.
 echo -e "\n# Enable OVN commands using a remote database.
