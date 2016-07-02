@@ -58,7 +58,7 @@ fi
 # repository contents.
 
 if [ ! -d "networking-ovn/.git" ]; then
-    git clone https://git.openstack.org/openstack/networking-ovn.git
+    git clone https://github.com/intlabs/networking-ovn.git
 fi
 
 # We need swap space to do any sort of scale testing with the Vagrant config.
