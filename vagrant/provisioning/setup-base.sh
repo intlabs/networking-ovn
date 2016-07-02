@@ -32,6 +32,9 @@ echo export LANG=en_US.UTF-8 >> ~/.bash_profile
 # FIXME(mestery): Remove once Vagrant boxes allow apt-get to work again
 sudo rm -rf /var/lib/apt/lists/*
 sudo apt-get install -y git
+sudo pip install -U pip
+sudo pip install -U pbr
+sudo pip install -U os-testr
 
 # FIXME(mestery): By default, Ubuntu ships with /bin/sh pointing to
 # the dash shell.
