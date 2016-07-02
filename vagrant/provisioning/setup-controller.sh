@@ -93,14 +93,6 @@ source devstack/openrc admin admin
 neutron net-update --shared $PUBLIC_NETWORK_NAME
 neutron subnet-update --enable_dhcp=True $PUBLIC_SUBNET_NAME
 
-# NFS server setup
-sudo apt-get update
-sudo apt-get install -y nfs-kernel-server nfs-common
-sudo mkdir -p /opt/stack/data/nova/instances
-sudo touch /etc/exports
-sudo sh -c "echo \"/opt/stack/data/nova/instances $ovn_vm_subnet(rw,sync,fsid=0,no_root_squash)\" >> /etc/exports"
-sudo service nfs-kernel-server restart
-sudo service idmapd restart
 
 # Set the OVN_*_DB variables to enable OVN commands using a remote database.
 echo -e "\n# Enable OVN commands using a remote database.
