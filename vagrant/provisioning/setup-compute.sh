@@ -34,6 +34,14 @@ SCREEN_LOGDIR=/opt/stack/log/data
 # Enable the DHCP and metadata services on the compute node.
 enable_service q-dhcp q-meta
 
+# Whether to enable using OVN's L3 functionality. If this value is disabled,
+# OpenStack will use the q-l3 functionality.  If you set OVN_L3_MODE to False,
+# you must also enable the q-l3 service.
+# By default OVN_L3_MODE is True
+OVN_L3_MODE=False
+enable_service q-l3
+#disable_service q-l3
+
 # Until OVN supports NAT, the private network IP address range
 # must not conflict with IP address ranges on the host. Change
 # as necessary for your environment.
