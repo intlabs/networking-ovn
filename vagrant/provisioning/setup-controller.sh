@@ -51,7 +51,7 @@ disable_service q-dhcp q-meta
 disable_service n-cpu
 
 # Disable cinder services and tempest to reduce deployment time.
-disable_service c-api c-sch c-vol tempest
+disable_service tempest
 
 # Until OVN supports NAT, the private network IP address range
 # must not conflict with IP address ranges on the host. Change
