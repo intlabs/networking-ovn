@@ -46,6 +46,13 @@ disable_service ovn-controller
 # architecture only deploys them on separate compute nodes.
 disable_service q-dhcp q-meta
 
+# Whether to enable using OVN's L3 functionality. If this value is disabled,
+# OpenStack will use the q-l3 functionality.  If you set OVN_L3_MODE to False,
+# you must also enable the q-l3 service.
+# By default OVN_L3_MODE is True
+OVN_L3_MODE=False
+#enable_service q-l3
+
 # Disable the nova compute service on the controller node because the
 # architecture only deploys it on separate compute nodes.
 disable_service n-cpu
